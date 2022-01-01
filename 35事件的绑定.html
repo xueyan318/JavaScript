@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            /**
+             * 点击按钮以后弹出内容
+             */
+            //获取按钮对象
+            var btn01 = document.getElementById("btn01");
+            /**
+             * 使用 对象.事件=函数的形式绑定响应函数，
+             * 不能绑定多个，如果绑定多个，则后面的覆盖前面的
+             */
+            // //为btn01绑定一个单击响应函数
+            // btn01.onclick = function() {
+            //     alert("1");
+            // };
+            // //为btn01绑定第二个响应函数
+            // btn01.onclick = function() {
+            //     alert("2");
+            // }
+            /**
+             * addEventListener()
+             *  -通过这个方法也可以为元素绑定响应函数
+             *  -参数：
+             *      1.事件的字符串,不要on
+             *      2.回调函数，当事件触发时，函数会被调用
+             *      3.是否在捕获阶段事件触发事件，需要一个布尔值，一般都传false
+             * 使用addEventListener()可以同时为一个元素的相同事件绑定多个响应函数，
+             * 这样当事件被触发时，会按照绑定顺序执行
+             */
+            // btn01.addEventListener("click", function() {
+            //     alert(1);
+            // }, false);
+
+            // btn01.addEventListener("click", function() {
+            //     alert(2);
+            // }, false);
+            bind(btn01, "click", function() {
+                    alert(1)
+                })
+                /**
+                 * 定义一个函数，用来指定元素绑定响应函数
+                 * 参数：
+                 *  obj 要绑定事件的对象
+                 *  eventStr 事件的字符串(不要on)
+                 *  callback 回调函数
+                 */
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    //大部分浏览器兼容的方式
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    //IE8及以下
+                    obj.attachEvent("on" + eventStr, callback);
+                }
+
+
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+<button id="btn01">点我一下</button>
+
+</html>
