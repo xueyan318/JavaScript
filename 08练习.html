@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #info {
+            width: 300px;
+            height: 500px;
+            background-color: #bfa;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            /**
+             * 当垂直滚动条滚动到底了,使表单项可用
+             *     onscroll
+             *       -该事件会在元素的滚动条滚动时触发
+             */
+            //获取id为info的p元素
+            var info = document.getElementById("info");
+            //获取两个表单项
+            var inputs = document.getElementsByTagName("input");
+            //为Info绑定一个滚动条滚动事件
+            info.onscroll = function() {
+                // 检查滚动条是否滚动到底
+                if (info.scrollHeight - info.scrollTop <= info.clientHeight) {
+                    //滚动条滚动到底使表单项可用
+                    /**
+                     * disabled属性可以设置一个元素是否禁用
+                     *  如果true禁用
+                     */
+                    inputs[0].disabled = false;
+                    inputs[1].disabled = false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>欢迎亲爱的用户阅读</h3>
+    <p id="info">
+        亲爱的用户,请仔细阅读以下协议,如果你不仔细阅读,就不要注册哦。尊敬的乘客您好:您乘坐的G2021次列车即将到站,请您整理好心情,收起悲伤,准备转乘航班Z2022次航班,祝您旅途愉快…摘抄:每个人都会有一段异常艰难的时光生活的压力,工作的失意,学业的压力;挺过来的,就会豁然开朗,挺不过来的,时间会教你,怎么与他们握手言和。那些让你感到累的关系和交流,就别再纠结了,生活已经足够辛苦了,尽量靠近那些能给你带来温暖的人吧 “你超棒的,你值得任何人为你心动” 在最需要鼓励的时候,记得把这句话说给自己听。
+        "永远不要去追一匹马,用追马的时间去种草。""人生还有无数美好等着跟你相遇，不要在最好的年纪活得最便宜。你得去丰富,去感受,去起舞,去让自己变成珍贵的存在。福楼拜的一句话致奋斗在路上的你:人的一生中最光辉的一天,并非是功成名就的那天，而是从悲叹与绝望中,产生对人生的挑战,以勇敢迈向意志的那天。 “如果情绪总是处于失控状态，就会被感情牵着鼻子走,丧失自由。""成长的意义在于增加人生阅历,丰富生命体验，不断觉察自省，无限接近成熟。"真正的努力应该是:一种明白自己在做什么 又能时刻投入在当下和其中的自控力
+        而非表面！
+
+
+
+
+    </p>
+    <!-- 如果为表单项添加disabled="disabled" -->
+    <input type="checkbox" disabled="disabled">我已仔细阅读协议，一定遵守
+    <input type="submit" value="注册" disabled="disabled">
+</body>
+
+</html>
